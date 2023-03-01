@@ -10,7 +10,6 @@ const useFetchAPI = () => {
       const returnAPI = await response.json();
       const { results } = returnAPI;
       setData(results);
-      console.log(results);
     };
     fetchAPI();
   }, []);

@@ -2,10 +2,18 @@ import React, { useContext } from 'react';
 import fetchAPIContext from '../../context/fetchAPIContext';
 
 function Table() {
-  const { data } = useContext(fetchAPIContext);
+  const { nameFiltered, handleName } = useContext(fetchAPIContext);
 
   return (
     <div>
+      <form>
+        <input
+          type="text"
+          name="name"
+          data-testid="name-filter"
+          onChange={ (event) => handleName(event) }
+        />
+      </form>
       <table>
         <thead>
           <tr>
@@ -24,7 +32,7 @@ function Table() {
             <th>URL</th>
           </tr>
 
-          {data && data.map((element, index) => (
+          {nameFiltered && nameFiltered.map((element, index) => (
             <tr key={ index }>
               <td>{element.name}</td>
               <td>{element.rotation_period}</td>
