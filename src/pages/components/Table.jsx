@@ -2,7 +2,12 @@ import React, { useContext } from 'react';
 import fetchAPIContext from '../../context/fetchAPIContext';
 
 function Table() {
-  const { nameFiltered, handleName } = useContext(fetchAPIContext);
+  const {
+    nameFiltered,
+    handleName,
+    handleSelectComparation,
+    handleBtnSubmit,
+  } = useContext(fetchAPIContext);
 
   return (
     <div>
@@ -13,6 +18,41 @@ function Table() {
           data-testid="name-filter"
           onChange={ (event) => handleName(event) }
         />
+        <select
+          data-testid="column-filter"
+          name="column"
+          onChange={ (event) => handleSelectComparation(event) }
+        >
+          <option value="population">population</option>
+          <option value="orbital_period">orbital_period</option>
+          <option value="diameter">diameter</option>
+          <option value="rotation_period">rotation_period</option>
+          <option value="surface_water">surface_water</option>
+        </select>
+        <select
+          data-testid="comparison-filter"
+          name="comparationFilter"
+          onChange={ (event) => handleSelectComparation(event) }
+        >
+          <option value="maior que">maior que</option>
+          <option value="igual a">igual a</option>
+          <option value="menor que">menor que</option>
+        </select>
+
+        <input
+          type="number"
+          data-testid="value-filter"
+          name="initialNumber"
+          defaultValue={ 0 }
+          onChange={ (event) => handleSelectComparation(event) }
+        />
+        <button
+          type="button"
+          data-testid="button-filter"
+          onClick={ () => handleBtnSubmit() }
+        >
+          Filtrar
+        </button>
       </form>
       <table>
         <thead>
@@ -31,7 +71,9 @@ function Table() {
             <th>Edited</th>
             <th>URL</th>
           </tr>
+        </thead>
 
+        <tbody>
           {nameFiltered && nameFiltered.map((element, index) => (
             <tr key={ index }>
               <td>{element.name}</td>
@@ -57,8 +99,7 @@ function Table() {
               </td>
             </tr>
           ))}
-
-        </thead>
+        </tbody>
       </table>
     </div>
   );

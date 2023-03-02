@@ -7,7 +7,30 @@ function APIProvider({ children }) {
   const { data } = useFetchAPI();
   const [filterName, setFilterName] = useState({
     name: '',
+    selectedFilters: [],
   });
+
+  const [selectionComparation, setSelectionComparation] = useState({
+    column: 'population',
+    comparationFilter: 'maior que',
+    initialNumber: 0,
+  });
+
+  const handleSelectComparation = (event) => {
+    const { name, value } = event.target;
+    setSelectionComparation({
+      ...selectionComparation,
+      [name]: value,
+    });
+  };
+
+  const handleBtnSubmit = () => {
+    const { selectedFilters } = filterName;
+    setFilterName({
+      ...filterName,
+      selectedFilters: [...selectedFilters, selectionComparation],
+    });
+  };
 
   const handleName = (event) => {
     const { name, value } = event.target;
@@ -22,9 +45,30 @@ function APIProvider({ children }) {
     nameFiltered = data.filter((element) => element.name.includes(filterName.name));
   }
 
+  const { selectedFilters } = filterName;
+
+  if (selectedFilters.length > 0) {
+    selectedFilters.forEach((element) => {
+      nameFiltered = nameFiltered.filter((element2) => {
+        switch (element.comparationFilter) {
+        case 'maior que':
+          return ((element2[element.column]) * 1) > ((element.initialNumber) * 1);
+        case 'igual a':
+          return ((element2[element.column]) * 1) === ((element.initialNumber) * 1);
+        case 'menor que':
+          return ((element2[element.column]) * 1) < ((element.initialNumber) * 1);
+        default:
+          return null;
+        }
+      });
+    });
+  }
+
   const valueProvider = ({
     nameFiltered,
     handleName,
+    handleSelectComparation,
+    handleBtnSubmit,
   });
 
   return (
