@@ -7,7 +7,23 @@ function Table() {
     handleName,
     handleSelectComparation,
     handleBtnSubmit,
+    handleToDeleteFilter,
+    handleResetFilters,
+    handleColumns,
+    filteredPlanet,
   } = useContext(fetchAPIContext);
+
+  let categoriesColumns = [
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ];
+
+  if (nameFiltered) {
+    categoriesColumns = handleColumns(categoriesColumns, filteredPlanet);
+  }
 
   return (
     <div>
@@ -23,11 +39,13 @@ function Table() {
           name="column"
           onChange={ (event) => handleSelectComparation(event) }
         >
-          <option value="population">population</option>
-          <option value="orbital_period">orbital_period</option>
-          <option value="diameter">diameter</option>
-          <option value="rotation_period">rotation_period</option>
-          <option value="surface_water">surface_water</option>
+          {categoriesColumns.map((column, index) => (
+            <option
+              key={ index }
+            >
+              {column}
+            </option>
+          ))}
         </select>
         <select
           data-testid="comparison-filter"
@@ -43,7 +61,6 @@ function Table() {
           type="number"
           data-testid="value-filter"
           name="initialNumber"
-          defaultValue={ 0 }
           onChange={ (event) => handleSelectComparation(event) }
         />
         <button
@@ -53,6 +70,31 @@ function Table() {
         >
           Filtrar
         </button>
+        <button
+          data-testid="button-remove-filters"
+          onClick={ () => handleResetFilters() }
+        >
+          Limpar Filtros
+        </button>
+        <div>
+          <ul>
+            {filteredPlanet.selectedFilters.map(({
+              column, comparationFilter, initialNumber, index,
+            }) => (
+              <li key={ index } data-testid="filter">
+                {`${column} ${comparationFilter} ${initialNumber}`}
+                <button
+                  type="button"
+                  onClick={
+                    () => handleToDeleteFilter(column, comparationFilter, initialNumber)
+                  }
+                >
+                  Limpar
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </form>
       <table>
         <thead>

@@ -5,7 +5,7 @@ import useFetchAPI from '../hooks/useFetchAPI';
 
 function APIProvider({ children }) {
   const { data } = useFetchAPI();
-  const [filterName, setFilterName] = useState({
+  const [filteredPlanet, setFilterName] = useState({
     name: '',
     selectedFilters: [],
   });
@@ -25,27 +25,62 @@ function APIProvider({ children }) {
   };
 
   const handleBtnSubmit = () => {
-    const { selectedFilters } = filterName;
+    const { selectedFilters } = filteredPlanet;
     setFilterName({
-      ...filterName,
+      ...filteredPlanet,
       selectedFilters: [...selectedFilters, selectionComparation],
+    });
+    setSelectionComparation({
+      column: 'population',
+      comparationFilter: 'maior que',
+      initialNumber: 0,
+    });
+  };
+
+  const handleResetFilters = () => {
+    setFilterName({
+      name: '',
+      selectedFilters: [],
+    });
+  };
+
+  const handleColumns = (columns, filteredElements) => {
+    if (filteredElements.selectedFilters.length < 1) {
+      return columns;
+    }
+    const columnsSearched = filteredElements.selectedFilters.map(({ column }) => column);
+    return columns.filter((element) => (
+      columnsSearched.indexOf(element)
+    ));
+  };
+
+  const handleToDeleteFilter = (column, comparationFilter, initialNumber) => {
+    const { selectedFilters } = filteredPlanet;
+    const newFilter = selectedFilters.filter((filtered) => (
+      filtered.column !== column
+        || filtered.comparationFilter !== comparationFilter
+        || filtered.initialNumber !== initialNumber
+    ));
+    setFilterName({
+      ...filteredPlanet,
+      selectedFilters: newFilter,
     });
   };
 
   const handleName = (event) => {
     const { name, value } = event.target;
     setFilterName({
-      ...filterName,
+      ...filteredPlanet,
       [name]: value,
     });
   };
 
   let nameFiltered = [];
   if (data) {
-    nameFiltered = data.filter((element) => element.name.includes(filterName.name));
+    nameFiltered = data.filter((element) => element.name.includes(filteredPlanet.name));
   }
 
-  const { selectedFilters } = filterName;
+  const { selectedFilters } = filteredPlanet;
 
   if (selectedFilters.length > 0) {
     selectedFilters.forEach((element) => {
@@ -66,9 +101,13 @@ function APIProvider({ children }) {
 
   const valueProvider = ({
     nameFiltered,
+    filteredPlanet,
+    handleResetFilters,
     handleName,
     handleSelectComparation,
     handleBtnSubmit,
+    handleToDeleteFilter,
+    handleColumns,
   });
 
   return (
