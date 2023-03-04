@@ -61,6 +61,7 @@ function Table() {
           type="number"
           data-testid="value-filter"
           name="initialNumber"
+          defaultValue={ 0 }
           onChange={ (event) => handleSelectComparation(event) }
         />
         <button
@@ -77,23 +78,21 @@ function Table() {
           Limpar Filtros
         </button>
         <div>
-          <ul>
-            {filteredPlanet.selectedFilters.map(({
-              column, comparationFilter, initialNumber, index,
-            }) => (
-              <li key={ index } data-testid="filter">
-                {`${column} ${comparationFilter} ${initialNumber}`}
-                <button
-                  type="button"
-                  onClick={
-                    () => handleToDeleteFilter(column, comparationFilter, initialNumber)
-                  }
-                >
-                  Limpar
-                </button>
-              </li>
-            ))}
-          </ul>
+          {filteredPlanet.selectedFilters.map(({
+            column, comparationFilter, initialNumber,
+          }) => (
+            <p key={ initialNumber } data-testid="filter">
+              {`${column} ${comparationFilter} ${initialNumber}`}
+              <button
+                type="button"
+                onClick={
+                  () => handleToDeleteFilter(column, comparationFilter, initialNumber)
+                }
+              >
+                Limpar
+              </button>
+            </p>
+          ))}
         </div>
       </form>
       <table>
