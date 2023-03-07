@@ -11,6 +11,8 @@ function Table() {
     handleResetFilters,
     handleColumns,
     filteredPlanet,
+    handlePlanetOrder,
+    handlePlanetOrderFilter,
   } = useContext(fetchAPIContext);
 
   let categoriesColumns = [
@@ -78,6 +80,53 @@ function Table() {
           Limpar Filtros
         </button>
         <div>
+          <select
+            data-testid="column-sort"
+            name="column"
+            onChange={ (event) => handlePlanetOrderFilter(event) }
+          >
+            {
+              categoriesColumns.map((elemen, index) => (
+                <option
+                  key={ index }
+                  value={ elemen }
+                  name="ascType"
+                >
+                  { elemen }
+                </option>
+              ))
+            }
+          </select>
+        </div>
+        <label htmlFor="ASC">
+          Ascendente
+          <input
+            data-testid="column-sort-input-asc"
+            type="radio"
+            name="sort"
+            value="ASC"
+            onChange={ (event) => handlePlanetOrderFilter(event) }
+          />
+        </label>
+        <label htmlFor="DESC">
+          Descendente
+          <input
+            data-testid="column-sort-input-desc"
+            type="radio"
+            name="sort"
+            value="DESC"
+            onChange={ (event) => handlePlanetOrderFilter(event) }
+          />
+        </label>
+        <button
+          type="button"
+          data-testid="column-sort-button"
+          onClick={ (event) => handlePlanetOrder(event) }
+        >
+          Ordenar
+        </button>
+
+        <div>
           {filteredPlanet.selectedFilters.map(({
             column, comparationFilter, initialNumber,
           }) => (
@@ -117,6 +166,15 @@ function Table() {
         <tbody>
           {nameFiltered && nameFiltered.map((element, index) => (
             <tr key={ index }>
+              {Object.values(element).map((value, index2) => (
+                <td
+                  key={ value }
+                  data-testid={ index2 === 0 ? 'planet-name' : '' }
+                >
+                  { value }
+
+                </td>
+              ))}
               <td>{element.name}</td>
               <td>{element.rotation_period}</td>
               <td>{element.orbital_period}</td>

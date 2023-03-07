@@ -8,6 +8,12 @@ function APIProvider({ children }) {
   const [filteredPlanet, setFilterName] = useState({
     name: '',
     selectedFilters: [],
+    order: { column: '', sort: '' },
+  });
+
+  const [orderFilter, setOrderFilter] = useState({
+    column: 'population',
+    sort: 'asc',
   });
 
   const [selectionComparation, setSelectionComparation] = useState({
@@ -41,6 +47,27 @@ function APIProvider({ children }) {
     setFilterName({
       name: '',
       selectedFilters: [],
+      order: { column: '', sort: '' },
+    });
+  };
+
+  const handlePlanetOrderFilter = ({ target }) => {
+    const { name, value } = target;
+    const obj = {
+      [name]: value,
+    };
+    setOrderFilter({
+      ...orderFilter,
+      ...obj,
+    });
+  };
+
+  const handlePlanetOrder = () => {
+    setFilterName({
+      ...filteredPlanet,
+      order: {
+        ...orderFilter,
+      },
     });
   };
 
@@ -99,6 +126,25 @@ function APIProvider({ children }) {
     });
   }
 
+  if (filteredPlanet.order !== {}) {
+    const unknownData = [];
+    const knowData = [];
+
+    nameFiltered.forEach((element) => {
+      if (element[filteredPlanet.order.column] === 'unknown') {
+        unknownData.push(element);
+      } else knowData.push(element);
+    });
+    nameFiltered = knowData.sort((a, b) => {
+      if (filteredPlanet.order.sort === 'ASC') {
+        return a[filteredPlanet.order.column] - b[filteredPlanet.order
+          .column];
+      }
+      return b[filteredPlanet.order.column] - a[filteredPlanet.order.column];
+    });
+    nameFiltered = [...nameFiltered, ...unknownData];
+  }
+
   const valueProvider = ({
     nameFiltered,
     filteredPlanet,
@@ -108,6 +154,8 @@ function APIProvider({ children }) {
     handleBtnSubmit,
     handleToDeleteFilter,
     handleColumns,
+    handlePlanetOrder,
+    handlePlanetOrderFilter,
   });
 
   return (
