@@ -1,6 +1,17 @@
-<h1>StarWar Planets Search</h1>
+<h1>StarWar - Planets-Search</h1>
 
-<p>This is a project that uses React to create a Star Wars planets search application.</p>
+<p>This is a project for a Star Wars planets search application built with React. The application consumes an API to retrieve information about Star Wars planets and allows users to perform various types of filters.</p>
+
+<h2>Technologies Used</h2>
+
+<p>The project utilizes the following technologies:</p>
+
+<ul>
+  <li>React</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ul>
 
 <h2>Prerequisites</h2>
 
@@ -27,7 +38,7 @@
 
   <pre><code>npm install</code></pre>
 
-  <li>Start the application:</li>
+  <li>Start the development server:</li>
 
   <pre><code>npm start</code></pre>
 
@@ -36,7 +47,7 @@
 
 <h2>Usage</h2>
 
-<p>The application allows users to search for Star Wars planets and view detailed information about them.</p>
+<p>The application allows users to search for Star Wars planets using the provided search bar. Users can enter a search query and view the results in real-time. The application provides various filter options, including filtering by planet name, climate, terrain, and population. Users can apply multiple filters to narrow down the search results and find specific planets of interest.</p>
 
 <h2>Contributing</h2>
 
