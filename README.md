@@ -1,85 +1,61 @@
-# EN:
+<h1>StarWar Planets Search</h1>
 
-# Trybers And Dragons Project
+<p>This is a project that uses React to create a Star Wars planets search application.</p>
 
-## What was developed?
-For this project, a React application was developed using functional components, specific hooks, and the context API. The goal was to ensure that the filters work and test the application.
+<h2>Prerequisites</h2>
 
-## What do I need to know to do the project?
+<p>Before you begin, ensure that you meet the following requirements:</p>
 
-- Use React's Context API to manage state.
-- Use the React Hook useState.
-- Use the React Hook useContext.
-- Use the React Hook useEffect.
-- Create custom React Hooks.
-- Write tests to ensure that your application has good test coverage.
+<ul>
+  <li>Have Node.js installed: <a href="https://nodejs.org/en/download/">Node.js Downloads</a>.</li>
+</ul>
 
-## Mandatory Project Requirements
+<h2>Installation</h2>
 
-- 1 - Make a request to the /planets endpoint of the Star Wars API and populate a table with the returned data, excluding the residents column.
-- 2 - Create a text filter for the table.
-- 3 - Create a filter for numeric values.
-- 4 - Implement multiple numeric filters.
-- 5 - Develop tests to achieve 30% total test coverage for the application.
-- 6 - Do not use repeated filters.
-- 7 - Remove a numeric filter by clicking on the X icon of one of the filters, and remove all numeric filters simultaneously by clicking on another button to Remove All Filters.
-- 8 - Develop tests to achieve 60% total test coverage for the application.
-- 9 - Sort the columns in ascending or descending order.
+<p>Follow these steps to set up and run the project locally:</p>
 
-## Bonus Requirements
+<ol>
+  <li>Clone the repository:</li>
 
-- 11 Create the PVE class.
-- 12 Create the Dragon class.
-- 13 Create objects in the index file.
+  <pre><code>git clone https://github.com/BrunoSouza88/React_StarWar-Planets-Search_Trybe.git</code></pre>
 
+  <li>Navigate to the project directory:</li>
 
+  <pre><code>cd React_StarWar-Planets-Search_Trybe</code></pre>
 
-# PT-BR:
-# Projeto Trybers And Dragons
+  <li>Install the dependencies:</li>
 
+  <pre><code>npm install</code></pre>
 
-## O que foi desenvolvido?
-Para este projeto, foi aplicado o desenvolvimento de um Aplicação em React, utilizando componentes funcionais e determinados hooks, context API. Garantir que os filtros funcionassem e testar a aplicação.
+  <li>Start the application:</li>
 
-## O que preciso saber para fazer o projeto?
+  <pre><code>npm start</code></pre>
 
-- Utilizar a Context API do React para gerenciar estado.
-- Utilizar o React Hook useState;
-- Utilizar o React Hook useContext;
-- Utilizar o React Hook useEffect;
-- Criar React Hooks customizados.
-- Escrever testes para garantir que sua aplicação possua uma boa cobertura de testes.
+  <li>Access the application in your browser at <code>http://localhost:3000</code>.</li>
+</ol>
 
-## Requisitos obrigatórios do Projeto
+<h2>Usage</h2>
 
-- 1 - Faça uma requisição para o endpoint /planets da API de Star Wars e preencha uma tabela com os dados retornados, com exceção dos dados da coluna residents;
-- 2 - Crie um filtro de texto para a tabela;
-- 3 - Crie um filtro para valores numéricos;
-- 4 - Implemente múltiplos filtros numéricos;
-- 5 - Desenvolva testes para atingir 30% de cobertura total da aplicação;
-- 6 - Não utilize filtros repetidos;
-- 7 - Apague um filtro de valor numérico ao clicar no ícone X de um dos filtros e apague todas filtragens numéricas simultaneamente ao clicar em outro botão de Remover todas filtragens;
-- 8 - Desenvolva testes para atingir 60% de cobertura total da aplicação;
-- 9 - Ordene as colunas de forma ascendente ou descendente;
+<p>The application allows users to search for Star Wars planets and view detailed information about them.</p>
 
-## Requisitos Bônus
+<h2>Contributing</h2>
 
-- 11 Criar a classe PVE
-- 12 Crie a classe Dragon
-- 13 Crie objetos no arquivo index
-<br><br><br>
-# Qualquer dúvida me contate abaixo.
+<p>Contributions are what make the open-source community a fantastic place to learn, inspire, and create. Any contributions you make are greatly appreciated.</p>
 
+<ol>
+  <li>Fork the project.</li>
+  <li>Create a branch for your feature (<code>git checkout -b feature/AmazingFeature</code>).</li>
+  <li>Commit your changes (<code>git commit -m 'Add some amazing feature'</code>).</li>
+  <li>Push to the branch (<code>git push origin feature/AmazingFeature</code>).</li>
+  <li>Open a Pull Request.</li>
+</ol>
 
+<h2>License</h2>
 
-## :phone: Contact:
-<section>
-  <p style="background-color:#f5f5f5" class="connection-container">
-    <a href="https://www.linkedin.com/in/bruno-m-souza/" target="_blank">
-      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin" />
-    </a>
-    <a href="mailto:bmsouza88@gmail.com" target="_blank">
-      <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="email" />
-    </a>
-  </p>
-</section>
+<p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
+
+<h2>Contact</h2>
+
+<p>Bruno Souza - <a href="mailto:bmsouza88@gmail.com">bmsouza88@gmail.com</a></p>
+
+<p>Project Link: <a href="https://github.com/BrunoSouza88/React_StarWar-Planets-Search_Trybe">https://github.com/BrunoSouza88/React_StarWar-Planets-Search_Trybe</a></p>
