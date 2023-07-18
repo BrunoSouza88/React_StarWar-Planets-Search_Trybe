@@ -1,41 +1,102 @@
-.App {
-  text-align: center;
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Star Wars';
+  font-size: small;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form {
+  margin-bottom: 20px;
 }
 
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
+.form input[type='text'],
+.form input[type='number'],
+.form select {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.button {
+  background-color: #ffa000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #ffca28;
+}
+
+.filters {
   display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.filters label {
+  margin-right: 10px;
+  font-size: 16px;
 }
 
-@keyframes App-logo-spin {
+.filters input[type='radio'] {
+  margin-left: 5px;
+}
 
-  from {
-    transform: rotate(0deg);
-  }
+.filters select {
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+.filters p {
+  margin-bottom: 10px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #fff;
+}
+
+th {
+  background-color: #ffa000;
+  color: #fff;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #222;
+}
+
+tr:hover {
+  background-color: #555;
+}
+
+a {
+  color: #ffa000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

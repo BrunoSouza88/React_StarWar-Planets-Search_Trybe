@@ -6,7 +6,6 @@ import APIProvider from './context/APIProvider';
 function App() {
   return (
     <div>
-      <span>Hello, App!!</span>
       <APIProvider><Home /></APIProvider>
     </div>
   );

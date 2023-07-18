@@ -1,0 +1,131 @@
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+
+th {
+  background-color: #ffa000;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #222;
+}
+
+tr:hover {
+  background-color: #555;
+}
+
+a {
+  color: #ffa000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  padding: 8px;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.form-select {
+  padding: 8px;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: #ffa000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.filters-label {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.filters-radio {
+  margin-left: 5px;
+}
+
+.filters-paragraph {
+  margin-bottom: 10px;
+}
+
+.filters-button {
+  background-color: #ffa000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.table-cell {
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 768px) {
+  .table-container {
+    width: 100%;
+    overflow-x: scroll;
+  }
+}
+
+@keyframes lightEffect {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+th {
+  position: relative;
+  background-color: #ffa000;
+  font-weight: bold;
+  overflow: hidden;
+  animation: lightEffect 4s infinite linear;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+  background-size: 200% auto;
+}
